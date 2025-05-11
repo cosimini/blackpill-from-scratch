@@ -1,4 +1,4 @@
 int main(void) {
   char stackTest[] = "Hello, world!";
-  while(1);
+  while(1); // main loop
 }

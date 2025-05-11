@@ -4,14 +4,16 @@
 const uint32_t RAM_END = 0x2001ffff;
 
 // Forward declarations
-int main(void);
+int  main(void);
+void rsth(void);
+void init(void);
 void trap(void);
 void noop(void);
 
 // The vector table
 uint32_t __attribute__((section(".reset_vector"))) isr_vector[] = {
   (uint32_t) RAM_END,  //   0 - Initial SP value
-  (uint32_t) main,     //   1 - Reset handler
+  (uint32_t) rsth,     //   1 - Reset handler
   (uint32_t) noop,     //   2 - NMI
   (uint32_t) trap,     //   3 - Hard fault handler
   (uint32_t) trap,     //   4 - Memory management fault
@@ -271,5 +273,7 @@ uint32_t __attribute__((section(".reset_vector"))) isr_vector[] = {
 // Useful functions to fill the reset vector
 void trap(void) { while(1); }  // Trap the execution indefietely
 void noop(void) {}             // Do nothing
-
-
+void rsth(void) {
+  init();
+  main();
+}

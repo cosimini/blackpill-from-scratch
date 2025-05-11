@@ -15,8 +15,8 @@ rm build/*
 #  -ggdb               : Enable debugger symbols
 
 arm-none-eabi-gcc\
-  *.c\
-  -T link.ld \
+  src/*.c\
+  -T src/link.ld \
   -static \
   -ggdb\
   -mcpu=cortex-m4\

@@ -6,8 +6,8 @@ end
 rm build/*
 
 arm-none-eabi-gcc\
-  *.c\
-  -T link.ld \
+  src/*.c\
+  -T src/link.ld \
   -static \
   -ggdb\
   -mcpu=cortex-m4\
