@@ -4,11 +4,11 @@
 const uint32_t RAM_END = 0x2001ffff;
 
 // Forward declarations
-int  main(void);
-void rsth(void);
-void init(void);
-void trap(void);
-void noop(void);
+int  main(void);  // Main function defined in src/main.c
+void rsth(void);  // Reset handler, defined below
+void init(void);  // Init function defined in src/init.c
+void trap(void);  // Trap execution indefietely
+void noop(void);  // Do absolutely nothing
 
 // The vector table
 uint32_t __attribute__((section(".reset_vector"))) isr_vector[] = {
@@ -270,9 +270,9 @@ uint32_t __attribute__((section(".reset_vector"))) isr_vector[] = {
   (uint32_t) noop,     // 255 - IRQ 239
 };
 
-// Useful functions to fill the reset vector
-void trap(void) { while(1); }  // Trap the execution indefietely
-void noop(void) {}             // Do nothing
+// Implementations
+void trap(void) { while(1); }
+void noop(void) {}
 void rsth(void) {
   init();
   main();

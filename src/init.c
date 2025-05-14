@@ -52,6 +52,8 @@ void init(void) {
     SET_BIT((uint32_t*) GPIOC_OFFSET, 27, 0);
 }
 
+// Set the state of the LED
+// It is connected to the pin on the cathode, so it is on when the pin is low
 void setLED(bool state) {
   if (state) { SET_BIT((uint32_t*) (GPIOC_OFFSET + GPIO_ODR), 13, 0); }
   else { SET_BIT((uint32_t*) (GPIOC_OFFSET + GPIO_ODR), 13, 1); }
