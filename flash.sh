@@ -17,4 +17,3 @@ arm-none-eabi-gcc\
 if test "$status" -eq 0
   openocd --file interface/stlink-v2-1.cfg --file target/stm32f4x.cfg -c "program build/output.o verify reset exit"
 end
-

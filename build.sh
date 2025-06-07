@@ -17,6 +17,7 @@ rm build/*
 arm-none-eabi-gcc\
   src/*.c\
   -T src/link.ld \
+  -Wall -Wextra -Werror\
   -static \
   -ggdb\
   -mcpu=cortex-m4\
